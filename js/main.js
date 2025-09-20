@@ -12,7 +12,8 @@ function populateCityDropdown(cities) {
   // Function to fetch and display weather data
   function fetchWeather(latitude, longitude) {
     // Please replace with your own API URL and key if required
-    var apiUrl = `http://www.7timer.info/bin/api.pl?lon=${longitude}&lat=${latitude}&product=civillight&output=json`;
+    var apiUrl = `https://www.7timer.info/bin/api.pl?lon=${longitude}&lat=${latitude}&product=civillight&output=json`;
+
   
     fetch(apiUrl)
       .then(response => {
@@ -103,3 +104,10 @@ function populateCityDropdown(cities) {
       console.error('Error loading city data:', error);
     });
   
+document.getElementById('location-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  console.log("Form submitted"); // Debug
+  var selectElement = document.getElementById('city-select');
+  console.log("Selected value:", selectElement.value);
+  ...
+});
