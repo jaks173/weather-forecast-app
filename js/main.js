@@ -1,20 +1,33 @@
+function showForecastMessage(message, isError) {
+  var forecastContainer = document.getElementById('weather-forecast');
+  forecastContainer.innerHTML = '';
+  var el = document.createElement('p');
+  el.className = isError ? 'forecast-error' : 'forecast-loading';
+  el.textContent = message;
+  forecastContainer.appendChild(el);
+}
+
 // Function to populate the dropdown with city options from the JSON data
 function populateCityDropdown(cities) {
     var select = document.getElementById('city-select');
-    cities.forEach(function(city) {
+    var sorted = cities.slice().sort(function (a, b) {
+      var countryCmp = (a.country || '').localeCompare(b.country || '');
+      if (countryCmp !== 0) return countryCmp;
+      return (a.city || '').localeCompare(b.city || '');
+    });
+    sorted.forEach(function(city) {
       var option = document.createElement('option');
       option.value = city.latitude + ',' + city.longitude;
-      option.textContent = city.city + ', ' + city.country;
+      option.textContent = city.city + ', ' + (city.country || '');
       select.appendChild(option);
     });
   }
   
   // Function to fetch and display weather data
   function fetchWeather(latitude, longitude) {
-    // Please replace with your own API URL and key if required
+    showForecastMessage('Loading forecast...', false);
     var apiUrl = `https://www.7timer.info/bin/api.pl?lon=${longitude}&lat=${latitude}&product=civillight&output=json`;
 
-  
     fetch(apiUrl)
       .then(response => {
         if (!response.ok) {
@@ -27,6 +40,10 @@ function populateCityDropdown(cities) {
       })
       .catch(error => {
         console.error('Error fetching weather data:', error);
+        showForecastMessage(
+          'Could not load weather for this city. Please try again later.',
+          true
+        );
       });
   }
   
@@ -34,6 +51,11 @@ function populateCityDropdown(cities) {
   function displayWeather(data) {
     var forecastContainer = document.getElementById('weather-forecast');
     forecastContainer.innerHTML = ''; // Clear previous results
+
+    if (!data || !data.dataseries || !data.dataseries.length) {
+      showForecastMessage('No forecast data available for this location.', true);
+      return;
+    }
   
     // Assuming the API returns an array of 7-day forecast data in data.dataseries
     data.dataseries.forEach(function(forecast, index) {
@@ -102,12 +124,8 @@ function populateCityDropdown(cities) {
     })
     .catch(error => {
       console.error('Error loading city data:', error);
+      showForecastMessage(
+        'Could not load city list. Serve this folder over HTTP (see README).',
+        true
+      );
     });
-  
-document.getElementById('location-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  console.log("Form submitted"); // Debug
-  var selectElement = document.getElementById('city-select');
-  console.log("Selected value:", selectElement.value);
-  ...
-});

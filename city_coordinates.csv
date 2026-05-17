@@ -18,21 +18,21 @@ latitude,longitude,city,country
 53.349,-6.260,Dublin,Ireland
 55.953,-3.188,Edinburgh,Scotland
 43.7696,11.255,Florence,Italy
-50.110,8.682,Frankfurt,Germany        
+50.110,8.682,Frankfurt,Germany
 43.254,6.637,French Riviera,France
-32.650,-16.908,Funchal,Portugual
-36.140,-5.353,Gibraltar
-57.708,11.974,Gothenburg,Sweden     
+32.650,-16.908,Funchal,Portugal
+36.140,-5.353,Gibraltar,Gibraltar
+57.708,11.974,Gothenburg,Sweden
 53.548,9.987,Hamburg,Germany
 60.169,24.938,Helsinki,Finland
 39.020,1.482,Ibiza,Spain
 50.450,30.523,Kyiv,Ukraine
 61.115,10.466,Lillehammer,Norway
-38.722,-9.139,Lisbon,Portugual
-51.507,-0.127,London,England      
+38.722,-9.139,Lisbon,Portugal
+51.507,-0.127,London,England
 40.416,-3.703,Madrid,Spain
 39.695,3.017,Mallorca,Spain
-53.480,-2.242,Manchester,England       
+53.480,-2.242,Manchester,England
 43.296,5.369,Marseille,France
 27.760,-15.586,Maspalomas,Spain
 45.464,9.190,Milan,Italy
@@ -45,13 +45,13 @@ latitude,longitude,city,country
 64.146,-21.942,Reykjavík,Iceland
 56.879,24.603,Riga,Latvia
 41.902,12.496,Rome,Italy
-39.453,-31.127,Santa Cruz das Flores,Portugual
+39.453,-31.127,Santa Cruz das Flores,Portugal
 28.463,-16.251,Santa Cruz de Tenerife,Spain
 57.273,-6.215,Skye,Scotland
 42.697,23.321,Sofia,Bulgaria
 59.329,18.068,Stockholm,Sweden
 59.437,24.753,Tallinn,Estonia
-18.208,16.373,Vienna,Austria
+48.208,16.373,Vienna,Austria
 52.229,21.012,Warsaw,Poland
 53.961,-1.07,York,England
 47.376,8.541,Zurich,Switzerland

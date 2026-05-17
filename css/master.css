@@ -90,5 +90,22 @@ button:hover {
 .weather-card-title {
     font-weight: bold;
     margin: 10px 0;
-   
+}
+
+.forecast-loading,
+.forecast-error {
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.forecast-loading {
+    background: #fff;
+    color: #555;
+}
+
+.forecast-error {
+    background: #fdecea;
+    color: #b71c1c;
+    border: 1px solid #f5c6cb;
 }
