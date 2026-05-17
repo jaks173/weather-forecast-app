@@ -23,22 +23,40 @@ function populateCityDropdown(cities) {
     });
   }
   
+  function fetchJson(url) {
+    return fetch(url).then(function (response) {
+      if (!response.ok) {
+        throw new Error('HTTP error! Status: ' + response.status);
+      }
+      return response.json();
+    });
+  }
+
   // Function to fetch and display weather data
   function fetchWeather(latitude, longitude) {
     showForecastMessage('Loading forecast...', false);
-    var apiUrl = `https://www.7timer.info/bin/api.pl?lon=${longitude}&lat=${latitude}&product=civillight&output=json`;
+    var directUrl =
+      'https://www.7timer.info/bin/api.pl?lon=' +
+      encodeURIComponent(longitude) +
+      '&lat=' +
+      encodeURIComponent(latitude) +
+      '&product=civillight&output=json';
+    var proxyUrl =
+      '/api/weather?lon=' +
+      encodeURIComponent(longitude) +
+      '&lat=' +
+      encodeURIComponent(latitude);
+    var corsUrl =
+      'https://api.allorigins.win/raw?url=' + encodeURIComponent(directUrl);
 
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
+    fetchJson(proxyUrl)
+      .catch(function () {
+        return fetchJson(corsUrl);
       })
-      .then(data => {
+      .then(function (data) {
         displayWeather(data);
       })
-      .catch(error => {
+      .catch(function (error) {
         console.error('Error fetching weather data:', error);
         showForecastMessage(
           'Could not load weather for this city. Please try again later.',

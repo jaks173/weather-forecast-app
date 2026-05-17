@@ -11,7 +11,7 @@ You must serve the folder over HTTP (opening `index.html` directly will not load
 ```bash
 cd workspace/weather-forecast-app
 ./run.sh
-# or: python3 -m http.server 8000
+# uses server.py (static files + /api/weather proxy to avoid browser CORS)
 ```
 
 Open http://localhost:8000, pick a city, and click **Get Weather**.
