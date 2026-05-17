@@ -1,6 +1,6 @@
 # Weather Forecast App
 
-7-day forecast, **live conditions**, and **air quality (AQI)** for European cities.
+Global **weather & air quality dashboard** with interactive map, top-10 rankings, and 7-day forecast — including **10 Indian cities** and 50+ worldwide hubs.
 
 | Source | Data |
 |--------|------|
@@ -9,17 +9,23 @@
 
 **Live demo:** https://jaks173.github.io/weather-forecast-app/
 
-## Run locally
+## Features
 
-You must serve the folder over HTTP (opening `index.html` directly will not load `city_coordinates.json`).
+- **Global top 10** leaderboards: worst/best AQI, hottest cities, highest PM2.5
+- **Interactive map** (Leaflet) — pin color = US AQI; click to drill down
+- **City explorer** grouped by region (Asia includes India, Europe, Americas, …)
+- **7-day forecast** + current conditions per city
+
+## Run locally
 
 ```bash
 cd workspace/weather-forecast-app
-./run.sh
-# uses server.py (static files + /api/weather proxy to avoid browser CORS)
+./run.sh   # server.py — required for map rankings snapshot
 ```
 
-Open http://localhost:8000, pick a city, and click **Get Weather**.
+Open http://127.0.0.1:8000 — first load fetches live data for all cities (~15s), then cached 10 min.
+
+**Indian cities:** Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Pune, Ahmedabad, Jaipur, Kochi.
 
 ## Project layout
 

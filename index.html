@@ -4,35 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
     <link rel="stylesheet" href="css/master.css">
-    <title>Weather Forecast App</title>
+    <title>Weather & Air Quality Dashboard</title>
 </head>
 <body>
-    <header>
-        <h1>Weather Forecast</h1>
-        <p class="tagline">7-day outlook · live conditions · air quality</p>
+    <header class="app-header">
+        <div class="header-inner">
+            <h1>Weather & Air Quality</h1>
+            <p class="tagline">Global map · live rankings · 7-day forecast</p>
+        </div>
     </header>
 
-    <main>
-        <form id="location-form" class="search-panel">
-            <label for="city-select">City</label>
-            <select id="city-select" name="city" required>
-                <option value="">Choose a city…</option>
-            </select>
-            <button type="submit">Get forecast</button>
-        </form>
+    <main class="app-main">
+        <section class="dashboard-section" aria-labelledby="rankings-title">
+            <div class="section-head">
+                <h2 id="rankings-title">Global top 10</h2>
+                <p id="snapshot-status" class="status-text">Loading world snapshot…</p>
+            </div>
+            <div id="rankings-grid" class="rankings-grid"></div>
+        </section>
 
-        <section id="current-panel" class="current-panel hidden" aria-live="polite"></section>
+        <section class="map-section" aria-labelledby="map-title">
+            <div class="section-head">
+                <h2 id="map-title">World map</h2>
+                <p class="hint-text">Pin color = US AQI · click a pin or ranking row to see city details</p>
+            </div>
+            <div id="weather-map" class="weather-map"></div>
+            <div id="map-legend" class="map-legend"></div>
+        </section>
 
-        <section id="weather-forecast" class="card-container" aria-live="polite"></section>
+        <section class="city-section">
+            <form id="location-form" class="search-panel">
+                <label for="city-select">Explore a city</label>
+                <select id="city-select" name="city" required>
+                    <option value="">Choose a city…</option>
+                </select>
+                <button type="submit">View forecast</button>
+            </form>
+
+            <section id="current-panel" class="current-panel hidden" aria-live="polite"></section>
+            <section id="weather-forecast" class="card-container" aria-live="polite"></section>
+        </section>
     </main>
 
     <footer>
         <p>Data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> ·
-           <a href="http://www.7timer.info/" target="_blank" rel="noopener">7Timer!</a></p>
+           <a href="http://www.7timer.info/" target="_blank" rel="noopener">7Timer!</a> · Map © OpenStreetMap</p>
         <p>&copy; 2024 Akshay Jagtap</p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/map.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
