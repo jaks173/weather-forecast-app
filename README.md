@@ -1,6 +1,11 @@
 # Weather Forecast App
 
-7-day civil weather forecast for European cities using the free [7Timer!](https://www.7timer.info/) API.
+7-day forecast, **live conditions**, and **air quality (AQI)** for European cities.
+
+| Source | Data |
+|--------|------|
+| [Open-Meteo](https://open-meteo.com/) | Current temp, humidity, wind, US/EU AQI, PM2.5/PM10 (no API key, CORS-friendly) |
+| [7Timer!](http://www.7timer.info/) | 7-day civil outlook icons |
 
 **Live demo:** https://jaks173.github.io/weather-forecast-app/
 
@@ -44,10 +49,9 @@ json.dump(rows, open('city_coordinates.json','w'), indent=2, ensure_ascii=False)
 
 Push to `main` on [jaks173/weather-forecast-app](https://github.com/jaks173/weather-forecast-app). Pages serves from the repo root.
 
-## API
+## API (via `server.py` proxy)
 
-No API key required. Endpoint pattern:
+Local server exposes `/api/bundle?lat=&lon=` (7Timer + Open-Meteo + air quality).  
+On GitHub Pages, Open-Meteo is called directly; 7Timer uses a CORS fallback.
 
-```
-https://www.7timer.info/bin/api.pl?lon={longitude}&lat={latitude}&product=civillight&output=json
-```
+No API keys required (sources from [public-apis](https://github.com/public-apis/public-apis): Open-Meteo, 7Timer!, OpenAQ-style data via Open-Meteo air-quality API).

@@ -3,39 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
     <title>Weather Forecast App</title>
 </head>
 <body>
-
     <header>
-        <h1>Weather Forecast App</h1>
+        <h1>Weather Forecast</h1>
+        <p class="tagline">7-day outlook · live conditions · air quality</p>
     </header>
-    
+
     <main>
-        <form id="location-form">
-            <div class="form-group">
-                <label for="city-select">Select a City:</label>
-                <select id="city-select" name="city" required>
-                    <option value="">--Please choose an option--</option>
-                    <!-- City options will be populated here by JavaScript -->
-                </select>
-            </div>
-            <button type="submit">Get Weather</button>
+        <form id="location-form" class="search-panel">
+            <label for="city-select">City</label>
+            <select id="city-select" name="city" required>
+                <option value="">Choose a city…</option>
+            </select>
+            <button type="submit">Get forecast</button>
         </form>
-        
-        <section id="weather-forecast" class="card-container">
-            <!-- 7-day weather forecast  cards will be displayed here -->
-        </section>
+
+        <section id="current-panel" class="current-panel hidden" aria-live="polite"></section>
+
+        <section id="weather-forecast" class="card-container" aria-live="polite"></section>
     </main>
-    
+
     <footer>
+        <p>Data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> ·
+           <a href="http://www.7timer.info/" target="_blank" rel="noopener">7Timer!</a></p>
         <p>&copy; 2024 Akshay Jagtap</p>
     </footer>
 
-    <!-- JavaScript file -->
     <script src="js/main.js"></script>
-
 </body>
 </html>
